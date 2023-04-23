@@ -1,1 +1,49 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+$light-primary: mat.define-palette(mat.$blue-palette, A700);
+$light-accent: mat.define-palette(mat.$yellow-palette, A400);
+$light-warn: mat.define-palette(mat.$red-palette);
+
+// $dark-primary: mat.define-palette(mat.$blue-palette, 300);
+// $dark-accent: mat.define-palette(mat.$blue-palette, 300);
+// $dark-warn: mat.define-palette(mat.$red-palette);
+
+$light-theme: mat.define-light-theme((
+  color: (
+    primary: $light-primary,
+    accent: $light-accent,
+    warn: $light-warn,
+  )
+));
+
+// :root {
+//   --light-primary: #{mat-color($light-primary)};
+//   --light-accent: #{mat-color($light-accent)};
+//   --light-warn: #{mat-color($light-warn)};
+// }
+
+// $dark-theme: mat.define-dark-theme((
+//   color:(
+//     primary: $dark-primary,
+//     accent: $dark-accent,
+//     warn: $dark-warn,
+//   )
+// ));
+
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($light-theme);
+
+// Apply the light theme only when the user prefers light themes.
+// @media (prefers-color-scheme: light) {
+//  // Use the `-color` mixins to only apply color styles without reapplying the same
+//  // typography and density styles.
+//  @include mat.all-component-themes($dark-theme);
+// }
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: "Poppins", "Helvetica Neue", sans-serif; }

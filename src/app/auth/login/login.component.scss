@@ -1,0 +1,58 @@
+.view-container{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.outer-card{
+  align-self: center;
+  padding-top: 20px;
+  background-color: rgba(247, 247, 247,.5);
+  border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 16px));
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.login-card{
+  background-color: rgba(255, 255, 255, .2);
+  border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 16px));
+  padding-top: 20px;
+}
+
+.heading{
+  font-weight: 400;
+}
+
+.form-fields{
+  width: 20rem;
+}
+
+.need-help{
+  border-radius: var(--mdc-raised-button-container-shape, var(--mdc-shape-medium, 12px));
+  float: right;
+  width: 9.5rem;
+  height: 3rem;
+}
+
+.login-button{
+  border-radius: var(--mdc-raised-button-container-shape, var(--mdc-shape-medium, 12px));
+  float: left;
+  width: 9.2rem;
+  height: 3rem;
+  font-size: 16px;
+}
+
+.icons{
+  transform: scale(1.2);
+}
+
+.important{
+  color: red;
+}
+
+.logo{
+  width: 250px;
+}

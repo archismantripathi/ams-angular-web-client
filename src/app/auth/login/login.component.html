@@ -1,0 +1,63 @@
+<div class="view-container">
+  <!-- background animation -->
+  <app-background-animation></app-background-animation>
+  <!-- content -->
+  <mat-card class="outer-card">
+    <img
+      class="logo"
+      src="../../../assets/logo.svg"
+      alt="brand logo">
+    <h1 class="heading">Login to continue</h1>
+    <mat-card-content>
+
+      <mat-card class="login-card">
+        <mat-card-content>
+
+          <mat-form-field
+            class="form-fields"
+            appearance="outline">
+              <mat-label>Username<span class="important">*</span></mat-label>
+              <input
+                matInput
+                type="username"
+                placeholder="Username">
+              <mat-icon
+                matSuffix
+                color="primary">person_outline</mat-icon>
+          </mat-form-field>
+
+          <br>
+          <mat-form-field class="form-fields" appearance="outline">
+            <mat-label>
+              Password<span class="important">*</span>
+            </mat-label>
+            <input
+              matInput
+              type="password"
+              placeholder="Password">
+            <mat-icon
+              matSuffix
+              color="primary">lock_outline</mat-icon>
+          </mat-form-field>
+
+          <br>
+          <button
+            mat-raised-button
+            color="primary"
+            type=""
+            class="login-button">
+              <mat-icon class="icons">keyboard_arrow_right</mat-icon>Login
+          </button>
+          <button
+            class="need-help"
+            mat-button color="primary">
+              <mat-icon class="icons">help</mat-icon>Need Help
+          </button>
+
+        </mat-card-content>
+      </mat-card>
+
+    </mat-card-content>
+  </mat-card>
+
+</div>

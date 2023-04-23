@@ -1,0 +1,22 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>ams</title>
+  <g id="s">
+   <path transform="rotate(42.8911 618 221.625)" stroke="#000" id="svg_21" d="m616.86207,178.25l4.13793,82.26679l-6,4.48321l1.86207,-86.75z" opacity="NaN" stroke-width="30" fill="none"/>
+   <path transform="rotate(42.8911 634 310.625)" stroke="#000" id="svg_23" d="m632.86207,267.25l4.13793,82.26679l-6,4.48321l1.86207,-86.75z" opacity="NaN" stroke-width="30" fill="none"/>
+   <line transform="rotate(-2 615.506 274.25)" stroke="#2962ff" id="svg_24" y2="274.25" x2="676.0125" y1="274.25" x1="555" stroke-width="30" fill="none"/>
+  </g>
+  <g id="m">
+   <path stroke="#000" id="svg_6" d="m332,178.5l0,174.05899" opacity="undefined" stroke-width="30" fill="none"/>
+   <path transform="rotate(42.8911 403 232.625)" stroke="#2962ff" id="svg_7" d="m401.86207,189.25l4.13793,82.2668l-6,4.4832l1.86207,-86.75z" opacity="NaN" stroke-width="30" fill="none"/>
+   <path stroke="#000" id="svg_9" d="m508,228.5l0,125.059" opacity="undefined" stroke-width="30" fill="none"/>
+   <path transform="rotate(42.8911 467 229.625)" stroke="#2962ff" id="svg_20" d="m465.86207,186.25l4.13793,82.26679l-6,4.48321l1.86207,-86.75z" opacity="NaN" stroke-width="30" fill="none"/>
+  </g>
+  <g id="a">
+   <path stroke="#2962ff" id="svg_4" d="m274,272.5l0,80.05899" opacity="undefined" stroke-width="30" fill="none"/>
+   <line transform="rotate(12 272 188.717)" stroke="#2962ff" id="svg_31" y2="173.18385" x2="272" y1="204.25" x1="272" stroke-width="30" fill="none"/>
+   <ellipse stroke-width="30" ry="76.5" rx="76.5" id="svg_1" cy="264" cx="197.5" stroke="#000" fill="none"/>
+  </g>
+ </g>
+</svg>

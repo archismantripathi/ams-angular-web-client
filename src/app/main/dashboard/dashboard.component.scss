@@ -1,0 +1,17 @@
+.view-container{
+  height: 100%;
+  display: flex;
+}
+
+.sidebar{
+  width: 7rem;
+  border-radius: 0;
+  border-top-right-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 2rem));
+  border-bottom-right-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 2rem));
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.main{
+  flex-grow: 1;
+}
