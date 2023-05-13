@@ -1,0 +1,58 @@
+<div class="users-component">
+
+  <mat-card class="your-card rounded-card">
+    <div class="your-image">
+      <mat-icon color="primary" class="your-icon">person_outline</mat-icon>
+    </div>
+    <div class="your-details">
+      <div class="your-name">Your Name</div>
+      <div class="your-username">@username</div>
+      <span class="your-admin-status">ADMIN</span>
+    </div>
+  </mat-card>
+
+  <mat-card class="users-table rounded-card">
+
+    <div class="table-head">
+      <span class="heading">Users</span>
+      <button
+        mat-raised-button
+        color="primary"
+        class="add-user">
+          <mat-icon class="user-icon">add</mat-icon>
+          Add user
+      </button>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="user-record">
+      <div class="user-image">
+        <mat-icon color="primary" class="user-icon">person_outline</mat-icon>
+      </div>
+      <div class="user-details">
+        <span class="user-name">Your Name</span>
+        <span class="user-admin-status">ADMIN</span>
+        <div class="user-username">@username</div>
+      </div>
+      <div class="action-button-group">
+        <div
+          mat-ripple
+          matRippleColor=#2962ff56
+          class="action-button">
+            <mat-icon color="primary" class="action-button-icon">edit</mat-icon>
+        </div>
+        <div
+          mat-ripple
+          matRippleColor=#2962ff56
+          class="action-button">
+            <mat-icon color="primary" class="action-button-icon">delete</mat-icon>
+        </div>
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+  </mat-card>
+
+</div>

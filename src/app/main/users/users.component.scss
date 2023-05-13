@@ -1,0 +1,138 @@
+.users-component {
+  padding: 2rem;
+}
+
+.rounded-card{
+  border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 20px));
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+.your-card{
+  height: 14rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  margin-bottom: 2rem;
+}
+
+.your-image{
+  background-color: rgba(41, 98, 255, 0.1);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+  border-radius: 100%;
+  height: 10rem;
+  width: 10rem;
+  display: flex;
+}
+
+.your-icon{
+  margin: auto;
+  transform: scale(4.5);
+}
+
+.your-details{
+  margin: 2rem;
+  padding: auto 0;
+}
+
+.your-name{
+  font-size: 3rem;
+  font-weight: bold;
+  margin-top: 22px;
+  height: 60px;
+}
+
+.your-username{
+  font-weight:200;
+}
+
+.your-admin-status{
+  border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 10px));
+  background-color: #2962ff;
+  color: white;
+  font-size: x-small;
+  padding: 2px 5px;
+}
+
+.users-table{
+  min-height: 20rem;
+  padding: 0 1rem;
+}
+
+.heading{
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.table-head{
+  padding: 1rem;
+  display: flex;
+}
+
+.add-user{
+  margin-top: .5rem;
+  margin-left: auto;
+}
+
+.user-record{
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+}
+
+.user-image{
+  background-color: rgba(41, 98, 255, 0.1);
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  margin-left: .5rem;
+  border-radius: 100%;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+}
+
+.user-icon{
+  margin: auto;
+  transform: scale(1.4);
+}
+
+.user-details{
+  margin: .3rem;
+}
+
+.user-name{
+  font-size: large;
+}
+
+.user-username{
+  font-weight: 300;
+}
+
+.user-admin-status{
+  @extend .your-admin-status;
+  margin-left: .5rem;
+  position: relative;
+  bottom: .1rem;
+}
+
+.action-button-group{
+  margin-left: auto;
+  display: flex;
+  padding: 0 1rem;
+}
+
+.action-button{
+  margin-top: .5rem;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 100%;
+  margin-left: 0.7rem;
+}
+
+.action-button-icon{
+  margin: auto;
+  transform: scale(1.2);
+  position: relative;
+  left: 0.7rem;
+  top: 0.7rem;
+}

@@ -5,8 +5,8 @@ import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
   { path: 'login',     component: LoginComponent},
-  { path: 'home',      component: MainComponent },
-  { path: '**',        redirectTo: '/home'      }
+  { path: 'dashboard', component: MainComponent },
+  { path: '**',        redirectTo: '/dashboard' }
 ];
 
 @NgModule({
