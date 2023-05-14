@@ -14,12 +14,15 @@
           <mat-form-field
             class="form-fields"
             appearance="outline">
-              <mat-label>Username<span class="important">*</span></mat-label>
+              <mat-label>Username</mat-label>
               <input
                 matInput
                 type="username"
                 placeholder="Username"
-                [(ngModel)]="username">
+                [(ngModel)]="username"
+                (input)="onInputUsername()"
+                required>
+                <mat-hint *ngIf="invalidUsername">Please enter a valid username.</mat-hint>
               <mat-icon
                 matSuffix
                 color="primary">person_outline</mat-icon>
@@ -28,13 +31,16 @@
           <br>
           <mat-form-field class="form-fields" appearance="outline">
             <mat-label>
-              Password<span class="important">*</span>
+              Password
             </mat-label>
             <input
               matInput
               type="password"
               placeholder="Password"
-              [(ngModel)]="password">
+              [(ngModel)]="password"
+              (input)="onInputPassword()"
+              required>
+              <mat-hint *ngIf="invalidPassword">Please enter a valid password.</mat-hint>
             <mat-icon
               matSuffix
               color="primary">lock_outline</mat-icon>

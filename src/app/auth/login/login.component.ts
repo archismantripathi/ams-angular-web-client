@@ -1,28 +1,31 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { login } from './login.model';
-import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent{
   username: string ='';
   password: string ='';
+  invalidUsername: boolean = false;
+  invalidPassword: boolean = false;
 
-  constructor(
-    private http: HttpClient,
-    private router: Router ) {}
+  constructor(public authService: AuthService) {}
 
   async onLogin(){
-    this.http.post<login>('http://127.0.0.1:3000/auth/signin',{
-      username: this.username,
-      password: this.password
-    }).subscribe(data=>{
-      localStorage.setItem('auth-token',data.token);
-      this.router.navigate(['/']);
-    });
+    this.onInputUsername();
+    this.onInputPassword();
+    if(!this.invalidPassword&&!this.invalidUsername) {
+      this.authService.login(this.username, this.password);
+    }
+  }
+  async onInputUsername(){
+    this.invalidUsername=(this.username == "");
+  }
+  async onInputPassword(){
+    this.invalidPassword=(this.password == "");
   }
 }
