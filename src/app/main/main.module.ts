@@ -13,6 +13,7 @@ import { DevicesComponent } from './devices/devices.component';
 import { RoutinesComponent } from './routines/routines.component';
 import { ExtensionsComponent } from './extensions/extensions.component';
 import { ServicesComponent } from './services/services.component';
+import { TopbarComponent } from './topbar/topbar.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ServicesComponent } from './services/services.component';
     DevicesComponent,
     RoutinesComponent,
     ExtensionsComponent,
-    ServicesComponent
+    ServicesComponent,
+    TopbarComponent
   ],
   imports: [
     AppRoutingModule,

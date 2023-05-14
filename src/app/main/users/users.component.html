@@ -9,6 +9,14 @@
       <div class="your-username">@username</div>
       <span class="your-admin-status">ADMIN</span>
     </div>
+    <div class="action-button-group">
+      <div
+        mat-ripple
+        matRippleColor=#2962ff56
+        class="your-action-button">
+          <mat-icon color="primary" class="action-button-icon">edit</mat-icon>
+      </div>
+    </div>
   </mat-card>
 
   <mat-card class="users-table rounded-card">
@@ -23,35 +31,42 @@
           Add user
       </button>
     </div>
-
     <mat-divider></mat-divider>
+    <div
+      *ngFor="let item of [0,0,0,0,0,0,0,00,0,0,0,0,0,0,0,0]">
 
-    <div class="user-record">
-      <div class="user-image">
-        <mat-icon color="primary" class="user-icon">person_outline</mat-icon>
-      </div>
-      <div class="user-details">
-        <span class="user-name">Your Name</span>
-        <span class="user-admin-status">ADMIN</span>
-        <div class="user-username">@username</div>
-      </div>
-      <div class="action-button-group">
-        <div
-          mat-ripple
-          matRippleColor=#2962ff56
-          class="action-button">
-            <mat-icon color="primary" class="action-button-icon">edit</mat-icon>
+      <div class="user-record">
+
+        <div class="user-image">
+          <mat-icon color="primary" class="user-icon">person_outline</mat-icon>
         </div>
-        <div
-          mat-ripple
-          matRippleColor=#2962ff56
-          class="action-button">
-            <mat-icon color="primary" class="action-button-icon">delete</mat-icon>
+
+        <div class="user-details">
+          <span class="user-name">Your Name</span>
+          <span class="user-admin-status">ADMIN</span>
+          <div class="user-username">@username</div>
         </div>
+
+        <div class="action-button-group">
+          <div
+            mat-ripple
+            matRippleColor=#2962ff56
+            class="action-button">
+              <mat-icon color="primary" class="action-button-icon">edit</mat-icon>
+          </div>
+          <div
+            mat-ripple
+            matRippleColor=#2962ff56
+            class="action-button">
+              <mat-icon color="primary" class="action-button-icon">delete</mat-icon>
+          </div>
+        </div>
+
       </div>
+
+      <mat-divider></mat-divider>
+
     </div>
-
-    <mat-divider></mat-divider>
 
   </mat-card>
 

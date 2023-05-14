@@ -3,8 +3,12 @@
   display: flex;
 }
 
-.main{
+.main-container{
   height: 100%;
   margin-left: 7rem;
   flex-grow: 1;
+}
+
+.main{
+  padding-top: 6rem;
 }

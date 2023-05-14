@@ -1,0 +1,47 @@
+.top-bar{
+  width: 100%;
+  height: 7rem;
+  position: fixed;
+  background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgb(255, 255, 255), rgb(255, 255, 255));
+  backdrop-filter: linear-gradient(to top, blur(0px), blur(4px));
+  z-index: 1;
+  display: flex;
+}
+
+.top-bar-items{
+  margin-left: auto;
+  display: flex;
+}
+
+.user-image{
+  background-color: rgba(41, 98, 255, 0.1);
+  margin: .7rem;
+  border-radius: 100%;
+  height: 2.5rem;
+  width: 2.5rem;
+  display: flex;
+}
+.user-icon{
+  margin: auto;
+  transform: scale(1.2);
+}
+
+.right-box{
+  margin-top: 0.3rem;
+  margin-right: 0.7rem;
+  min-width: 100px;
+}
+
+.logout{
+  border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 5px));
+  color: #2962ff;
+  font-size: small;
+  display: flex;
+  align-items: center;
+  width: 5rem;
+  position: relative;
+  right: 0.2rem;
+}
+.logout-icon{
+  transform: scale(.7);
+}
