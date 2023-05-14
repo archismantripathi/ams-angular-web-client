@@ -18,7 +18,8 @@
               <input
                 matInput
                 type="username"
-                placeholder="Username">
+                placeholder="Username"
+                [(ngModel)]="username">
               <mat-icon
                 matSuffix
                 color="primary">person_outline</mat-icon>
@@ -32,7 +33,8 @@
             <input
               matInput
               type="password"
-              placeholder="Password">
+              placeholder="Password"
+              [(ngModel)]="password">
             <mat-icon
               matSuffix
               color="primary">lock_outline</mat-icon>
@@ -44,7 +46,7 @@
             color="primary"
             type=""
             class="login-button"
-            routerLink="/">
+            (click)="onLogin()">
               <mat-icon class="icons">keyboard_arrow_right</mat-icon>Login
           </button>
           <button

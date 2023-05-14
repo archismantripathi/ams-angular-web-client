@@ -10,7 +10,16 @@
 
 .top-bar-items{
   margin-left: auto;
+  margin-bottom: auto;
   display: flex;
+  position: relative;
+  top: 2rem;
+  right: 1rem;
+  border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 2rem));
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+  outline: auto;
+  outline-color: #2962ff;
 }
 
 .user-image{
