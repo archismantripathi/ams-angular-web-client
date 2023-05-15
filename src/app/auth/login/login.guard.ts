@@ -13,7 +13,7 @@ export class LoginGuard implements CanActivate {
     state: RouterStateSnapshot): boolean {
       const isAuth = this.authService.getIsAuth();
       if (isAuth) {
-        this.router.navigate(['/']);
+        this.router.navigate(['/dashboard']);
       }
       return !isAuth;
   }

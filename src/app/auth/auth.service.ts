@@ -6,12 +6,11 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  token = localStorage.getItem('auth-token');
   uri='http://127.0.0.1:3000/';
   constructor(private http: HttpClient, private router: Router) {}
 
   getIsAuth() {
-    if(this.token) {
+    if(localStorage.getItem('auth-token')) {
       return true;
     } else {
       return false;
@@ -24,9 +23,13 @@ export class AuthService {
     password: password,
     }).subscribe(data=>{
       localStorage.setItem('auth-token',data.token);
-      this.token = data.token;
-      this.router.navigate(['/']);
+      this.router.navigate(['/dashboard']);
     });
+  }
+
+  logout(){
+    localStorage.removeItem('auth-token');
+    this.router.navigate(['/login']);
   }
 }
 
