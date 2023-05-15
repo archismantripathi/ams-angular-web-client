@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { User } from '../main/users/users.model';
+import { User } from '../main/users/models/users-lagacy.model';
 
 @Injectable({
   providedIn: 'root'

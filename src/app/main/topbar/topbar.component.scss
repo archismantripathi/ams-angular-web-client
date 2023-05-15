@@ -41,6 +41,10 @@
   min-width: 100px;
 }
 
+.name {
+  margin-right: 1rem;
+}
+
 .logout{
   border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 5px));
   color: #2962ff;

@@ -74,11 +74,6 @@
   display: flex;
 }
 
-.add-user{
-  margin-top: .5rem;
-  margin-left: auto;
-}
-
 .user-record{
   display: grid;
   grid-template-columns: auto 1fr 1fr;
@@ -147,6 +142,63 @@
   margin-bottom: 1rem;
 }
 
+.add-user{
+  border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 20px));
+  outline: auto;
+  outline-color: #2962ff;
+  outline-width: 2px;
+  margin-top: .5rem;
+  margin-left: auto;
+}
+
 .no-user-found{
   margin: auto;
+}
+
+.form-fields {
+  margin: 1rem;
+}
+
+//ngtemplate user section styles
+
+.user-record-edit {
+  padding: 1rem;
+}
+
+.update-button {
+  border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 24px));
+  font-size: large;
+  height: 3rem;
+  width: 7rem;
+  margin-left: auto;
+}
+.close-button {
+  border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 24px));
+  outline: auto;
+  outline-color: #2962ff;
+  margin-left: 1rem;
+  font-size: large;
+  height: 3rem;
+  width: 7rem;
+}
+
+.update-button-group {
+  margin-top: 1rem;
+  display: flex;
+}
+
+.edit-users-card {
+  @extend .users-table;
+  padding-bottom: 0.5rem;
+}
+
+.update-checkbox {
+  position: relative;
+  left: 1rem;
+  bottom: 1.5rem;
+}
+
+.password-fields {
+  position: relative;
+  bottom: 1rem;
 }
