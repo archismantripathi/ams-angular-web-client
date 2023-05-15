@@ -5,9 +5,9 @@
       <mat-icon color="primary" class="your-icon">person_outline</mat-icon>
     </div>
     <div class="your-details">
-      <div class="your-name">Your Name</div>
-      <div class="your-username">@username</div>
-      <span class="your-admin-status">ADMIN</span>
+      <div class="your-name">{{loggedInUser.name}}</div>
+      <div class="your-username">@{{loggedInUser.username}}</div>
+      <span class="your-admin-status">{{loggedInUser.type}}</span>
     </div>
     <div class="action-button-group">
       <div
@@ -32,8 +32,8 @@
       </button>
     </div>
     <mat-divider></mat-divider>
-    <div
-      *ngFor="let item of [0,0,0,0,0,0,0,00,0,0,0,0,0,0,0,0]">
+
+    <div *ngFor="let user of users">
 
       <div class="user-record">
 
@@ -42,9 +42,9 @@
         </div>
 
         <div class="user-details">
-          <span class="user-name">Your Name</span>
-          <span class="user-admin-status">ADMIN</span>
-          <div class="user-username">@username</div>
+          <span class="user-name">{{user.name}}</span>
+          <span class="user-admin-status" *ngIf="user.admin">ADMIN</span>
+          <div class="user-username">@{{user.username}}</div>
         </div>
 
         <div class="action-button-group">
@@ -63,7 +63,6 @@
         </div>
 
       </div>
-
       <mat-divider></mat-divider>
 
     </div>

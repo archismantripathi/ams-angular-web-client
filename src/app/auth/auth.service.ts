@@ -11,10 +11,21 @@ export class AuthService {
 
   getIsAuth() {
     if(localStorage.getItem('auth-token')) {
+      this.refreshUser();
       return true;
     } else {
       return false;
     }
+  }
+
+  refreshUser() {
+    this.http.get<{data: {username: string, name: string, admin: any}}>(
+      this.uri+'api/user/'+localStorage.getItem('username')
+      ).subscribe(data=>{
+        localStorage.setItem('username', data.data.username);
+        localStorage.setItem('name', data.data.name);
+        localStorage.setItem('admin', data.data.admin);
+    });
   }
 
   login(username: string, password: string) {
@@ -22,13 +33,15 @@ export class AuthService {
     username: username,
     password: password,
     }).subscribe(data=>{
+      localStorage.setItem('username', username);
       localStorage.setItem('auth-token',data.token);
+      this.refreshUser();
       this.router.navigate(['/dashboard']);
     });
   }
 
   logout(){
-    localStorage.removeItem('auth-token');
+    localStorage.clear();
     this.router.navigate(['/login']);
   }
 }
