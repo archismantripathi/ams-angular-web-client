@@ -54,11 +54,14 @@
   color: white;
   font-size: x-small;
   padding: 2px 5px;
+  position: relative;
+  bottom: 0.2rem;
 }
 
 .users-table{
   min-height: 20rem;
   padding: 0 1rem;
+  padding-bottom: 2rem;
 }
 
 .heading{
