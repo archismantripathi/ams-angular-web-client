@@ -33,6 +33,9 @@
     </div>
     <mat-divider></mat-divider>
 
+    <div class="no-user-found" *ngIf="users.length<=1">
+      There is no one except you.
+    </div>
     <div *ngFor="let user of users">
     <div *ngIf="user.username!=loggedInUser.username">
 
