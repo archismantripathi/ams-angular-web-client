@@ -32,9 +32,6 @@ import { TopbarComponent } from './topbar/topbar.component';
     CommonModule,
     AngularMaterialModule,
     SharedModule
-  ],
-  exports: [
-    DashboardComponent
   ]
 })
 export class MainModule { }

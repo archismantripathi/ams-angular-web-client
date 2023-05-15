@@ -1,14 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
+import { User } from '../main/users/users.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   uri='http://127.0.0.1:3000/';
+  _user = new BehaviorSubject<any>({
+    username: localStorage.getItem('username'),
+    name: localStorage.getItem('name'),
+    type: localStorage.getItem('admin'),
+  });
+  user = this._user.asObservable();
   constructor(private http: HttpClient, private router: Router) {}
-
   getIsAuth() {
     if(localStorage.getItem('auth-token')) {
       this.refreshUser();
@@ -24,7 +31,16 @@ export class AuthService {
       ).subscribe(data=>{
         localStorage.setItem('username', data.data.username);
         localStorage.setItem('name', data.data.name);
-        localStorage.setItem('admin', data.data.admin);
+        let userTypeString: string = 'USER';
+        if(data.data.admin)
+          userTypeString='ADMIN';
+        localStorage.setItem('admin', userTypeString);
+
+        this._user.next({
+          username: data.data.username,
+          name: data.data.name,
+          type: userTypeString,
+        });
     });
   }
 
@@ -43,6 +59,11 @@ export class AuthService {
   logout(){
     localStorage.clear();
     this.router.navigate(['/login']);
+    this._user.next({
+      username: '',
+      name: '',
+      type: '',
+    });
   }
 }
 

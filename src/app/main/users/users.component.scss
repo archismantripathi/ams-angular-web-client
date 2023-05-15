@@ -9,7 +9,7 @@
 }
 
 .your-card{
-  height: 14rem;
+  min-height: 14rem;
   display: grid;
   grid-template-columns: auto 1fr 1fr;
   margin-bottom: 2rem;
@@ -40,10 +40,11 @@
   font-size: 3rem;
   font-weight: bold;
   margin-top: 22px;
-  height: 60px;
 }
 
 .your-username{
+  position: relative;
+  bottom: 0.5rem;
   font-weight:200;
 }
 
