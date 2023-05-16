@@ -136,6 +136,11 @@
   top: 0.7rem;
 }
 
+.confirm-delete {
+  color: red;
+  background-color: black;
+}
+
 .your-action-button{
   @extend .action-button;
   margin-top: auto;

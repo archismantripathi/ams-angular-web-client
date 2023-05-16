@@ -9,7 +9,7 @@
       <div class="your-username">@{{loggedInUser.username}}</div>
       <span class="your-admin-status">{{loggedInUser.type}}</span>
     </div>
-    <div class="action-button-group" *ngIf="!editMode">
+    <div class="action-button-group" *ngIf="!editMode&&!addUserMode">
       <div
         mat-ripple
         matRippleColor=#2962ff56
@@ -19,8 +19,12 @@
       </div>
     </div>
   </mat-card>
+
+
   <div *ngIf="!yourProfileEditMode">
-  <mat-card class="users-table rounded-card" *ngIf="!editMode;else editTemplate">
+  <div *ngIf="!addUserMode; else addUserTemplate">
+
+  <mat-card class="users-table rounded-card" *ngIf="!editMode; else editTemplate">
 
     <div class="table-head">
       <span class="heading">Users</span>
@@ -28,7 +32,7 @@
         mat-stroked-button
         color="primary"
         class="add-user"
-        (click)="onAddUser()">
+        (click)="onClickAddUser()">
           <mat-icon class="user-icon">add</mat-icon>
           Add user
       </button>
@@ -65,9 +69,16 @@
             mat-ripple
             matRippleColor=#2962ff56
             class="action-button"
-            (click)="onUserDelete(user.username)">
+            (click)="onUserDelete(user.username);">
               <mat-icon color="primary" class="action-button-icon">delete</mat-icon>
           </div>
+          <!-- <div
+            mat-ripple
+            matRippleColor=#2962ff56
+            class="action-button confirm-delete"
+            (click)="onUserDelete(user.username)">
+              <mat-icon class="action-button-icon">warning</mat-icon>
+          </div> -->
         </div>
 
       </div>
@@ -77,6 +88,7 @@
     </div>
 
   </mat-card>
+</div>
 </div>
 
 <!-- User edit -->
@@ -129,7 +141,7 @@
           type=""
           class="update-button"
           (click)="onUserEdit()">
-            <mat-icon class="icons">edit</mat-icon>Update
+            <mat-icon class="icons">edit</mat-icon>Confirm
         </button>
         <button
           class="close-button"
@@ -220,12 +232,105 @@
           type=""
           class="update-button"
           (click)="onYourProfileEdit()">
-            <mat-icon class="icons">edit</mat-icon>Update
+            <mat-icon class="icons">edit</mat-icon>Confirm
         </button>
         <button
           class="close-button"
           mat-button color="primary"
           (click)="yourProfileEditMode=false;changePassword=false">
+            <mat-icon class="icons">close</mat-icon>Close
+        </button>
+      </div>
+
+    </div>
+
+  </mat-card>
+</ng-template>
+
+
+<!-- add-user-template -->
+
+<ng-template #addUserTemplate>
+  <mat-card class="rounded-card edit-users-card">
+    <div class="table-head">
+      <span class="heading">Add new user</span>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="user-record-edit">
+      <div class="your-image">
+        <mat-icon color="primary" class="your-icon">person_outline</mat-icon>
+      </div>
+
+      <div class="user-record-edit-fields">
+
+        <mat-form-field class="form-fields" appearance="outline">
+          <mat-label>
+            Name
+          </mat-label>
+          <input
+            matInput
+            type="name"
+            placeholder="Name"
+            [(ngModel)]="_newUserName"
+            required>
+        </mat-form-field>
+
+        <mat-form-field
+          class="form-fields"
+          appearance="outline">
+            <mat-label>Username</mat-label>
+            <input
+              matInput
+              type="username"
+              placeholder="Username"
+              [(ngModel)]="_newUserUsername"
+              required>
+        </mat-form-field>
+
+      </div>
+      <div class="user-record-edit-fields password-fields">
+
+        <mat-form-field class="form-fields" appearance="outline">
+          <mat-label>
+            New password
+          </mat-label>
+          <input
+            matInput
+            type="password"
+            placeholder="New password"
+            [(ngModel)]="_newUserPassword"
+            required>
+        </mat-form-field>
+
+        <mat-form-field
+          class="form-fields"
+          appearance="outline">
+            <mat-label>Confirm new password</mat-label>
+            <input
+              matInput
+              type="password"
+              placeholder="Confirm new password"
+              [(ngModel)]="_newUserPasswordConfirm"
+              required>
+        </mat-form-field>
+
+      </div>
+      <mat-checkbox color="primary" class="update-checkbox" [(ngModel)]="_newUserAdmin">Admin</mat-checkbox>
+      <mat-divider></mat-divider>
+      <div class="update-button-group">
+        <button
+          mat-raised-button
+          color="primary"
+          type=""
+          class="update-button"
+          (click)="onAddUser()">
+            <mat-icon class="icons">add</mat-icon>Confirm
+        </button>
+        <button
+          class="close-button"
+          mat-button color="primary"
+          (click)="addUserMode=false">
             <mat-icon class="icons">close</mat-icon>Close
         </button>
       </div>

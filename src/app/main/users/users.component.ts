@@ -22,10 +22,7 @@ export class UsersComponent implements OnInit{
       this.ngOnInit();
     });
   }
-
-  onAddUser() {
-    this.openSnackBar('Add user works');
-  }
+  beforeConfirmDelete() {}
 
   editMode: boolean = false;
   editUsername: string = 'fff';
@@ -70,7 +67,7 @@ export class UsersComponent implements OnInit{
   onYourProfileEdit() {
     if(this.changePassword) {
       if(this._editedPassword!=this._editedPasswordConfirm || this._editedPassword==''){
-        this.openSnackBar('Passwords did not match!');
+        this.openSnackBar('❌ Passwords did not match or are empty!');
         this._editedPasswordConfirm = this._editedPassword = ''
         return;
       }
@@ -99,6 +96,42 @@ export class UsersComponent implements OnInit{
     }
     this.changePassword = false;
     this.yourProfileEditMode = false;
+  }
+
+  addUserMode = false;
+  _newUserUsername = '';
+  _newUserName = '';
+  _newUserAdmin = false;
+  _newUserPassword = '';
+  _newUserPasswordConfirm = '';
+  onClickAddUser() {
+    this._newUserUsername = ''+Date.now();
+    this._newUserName = '';
+    this._newUserAdmin = false;
+    this._newUserPassword = '';
+    this._newUserPasswordConfirm = '';
+    this.addUserMode = true;
+  }
+  onAddUser() {
+    if(this._newUserName == '') {
+      this.openSnackBar('❌ Name can\'t be empty.');
+      return;
+    }
+    if(this._newUserPassword!=this._newUserPasswordConfirm || this._newUserPassword==''){
+      this.openSnackBar('❌ Passwords did not match or are empty!');
+      this._newUserPasswordConfirm = this._newUserPassword = ''
+      return;
+    }
+    this.http.post<{message: string}>(this.uri+'user',{
+      username: this._newUserUsername,
+      name: this._newUserName,
+      password: this._newUserPassword,
+      admin: this._newUserAdmin,
+    }).subscribe(data=>{
+      this.openSnackBar(data.message);
+      this.addUserMode = false;
+      this.ngOnInit();
+    });
   }
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
