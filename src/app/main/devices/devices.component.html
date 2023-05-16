@@ -1,1 +1,58 @@
-<p>devices works!</p>
+<div class="devices-component">
+
+  <mat-card class="devices-table rounded-card">
+
+    <div class="table-head">
+      <span class="heading">Devices</span>
+      <button
+        mat-stroked-button
+        color="primary"
+        class="add-device">
+          <mat-icon class="device-icon">add</mat-icon>
+          Add device
+      </button>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="no-device-found" *ngIf="false">
+      No device found.
+    </div>
+    <div>
+    <div>
+
+      <div class="device-record">
+
+        <div class="device-image">
+          <mat-icon color="primary" class="device-icon">person_outline</mat-icon>
+        </div>
+
+        <div class="device-details">
+          <span class="device-name">Device Name</span>
+          <span class="device-status">Online</span>
+          <div class="device-id">#light@id</div>
+        </div>
+
+        <div class="action-button-group">
+          <div
+            mat-ripple
+            matRippleColor=#2962ff56
+            class="action-button">
+              <mat-icon color="primary" class="action-button-icon">edit</mat-icon>
+          </div>
+          <div
+            mat-ripple
+            matRippleColor=#2962ff56
+            class="action-button">
+              <mat-icon color="primary" class="action-button-icon">delete</mat-icon>
+          </div>
+        </div>
+
+      </div>
+      <mat-divider></mat-divider>
+
+    </div>
+    </div>
+
+  </mat-card>
+
+</div>

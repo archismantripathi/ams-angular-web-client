@@ -1,0 +1,142 @@
+.devices-component {
+  padding: 2rem;
+}
+
+.rounded-card{
+  border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 20px));
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+.devices-table{
+  min-height: 20rem;
+  padding: 0 1rem;
+  padding-bottom: 2rem;
+}
+
+.heading{
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.table-head{
+  padding: 1rem;
+  display: flex;
+}
+
+.device-record{
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+}
+
+.device-image{
+  background-color: rgba(41, 98, 255, 0.1);
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  margin-left: .5rem;
+  border-radius: 100%;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+}
+
+.device-icon{
+  margin: auto;
+  transform: scale(1.4);
+}
+
+.device-details{
+  margin: .3rem;
+}
+
+.device-name{
+  font-size: large;
+}
+
+.device-id{
+  font-weight: 300;
+}
+
+.device-status{
+  border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 10px));
+  background-color: #2962ff;
+  color: white;
+  font-size: x-small;
+  padding: 2px 5px;
+  position: relative;
+  bottom: 0.2rem;
+  margin-left: 0.5rem;
+  position: relative;
+  bottom: 0.1rem;
+}
+
+.action-button-group{
+  margin-left: auto;
+  display: flex;
+  padding: 0 1rem;
+}
+
+.action-button{
+  margin-top: .5rem;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 100%;
+  margin-left: 0.7rem;
+}
+
+.action-button-icon{
+  margin: auto;
+  transform: scale(1.2);
+  position: relative;
+  left: 0.7rem;
+  top: 0.7rem;
+}
+
+.add-device{
+  border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 20px));
+  outline: auto;
+  outline-color: #2962ff;
+  outline-width: 2px;
+  margin-top: .5rem;
+  margin-left: auto;
+}
+
+.no-device-found{
+  margin: auto;
+}
+
+.form-fields {
+  margin: 1rem;
+}
+
+.device-record-edit {
+  padding: 1rem;
+}
+
+.update-button {
+  border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 24px));
+  font-size: large;
+  height: 3rem;
+  width: 7rem;
+  margin-left: auto;
+}
+.close-button {
+  border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 24px));
+  outline: auto;
+  outline-color: #2962ff;
+  margin-left: 1rem;
+  font-size: large;
+  height: 3rem;
+  width: 7rem;
+}
+
+.edit-devices-card {
+  @extend .devices-table;
+  padding-bottom: 0.5rem;
+}
+
+.update-checkbox {
+  position: relative;
+  left: 1rem;
+  bottom: 1.5rem;
+}

@@ -136,10 +136,10 @@
   top: 0.7rem;
 }
 
-.confirm-delete {
-  color: red;
-  background-color: black;
-}
+// .confirm-delete {
+//   color: red;
+//   background-color: black;
+// }
 
 .your-action-button{
   @extend .action-button;
@@ -164,7 +164,7 @@
   margin: 1rem;
 }
 
-//ngtemplate user section styles
+//ngtemplate user edit section styles
 
 .user-record-edit {
   padding: 1rem;
