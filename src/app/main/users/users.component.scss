@@ -148,12 +148,13 @@
 }
 
 .add-user{
-  border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 20px));
+  border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 24px));
   outline: auto;
   outline-color: #2962ff;
   outline-width: 2px;
   margin-top: .5rem;
   margin-left: auto;
+  height: 3rem;
 }
 
 .no-user-found{
