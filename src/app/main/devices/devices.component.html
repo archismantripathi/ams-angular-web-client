@@ -7,43 +7,50 @@
       <button
         mat-stroked-button
         color="primary"
-        class="add-device">
+        class="add-device"
+        (click)="onClickAddDevice()">
           <mat-icon class="device-icon">add</mat-icon>
           Add device
       </button>
     </div>
     <mat-divider></mat-divider>
 
-    <div class="no-device-found" *ngIf="false">
+    <div class="no-device-found" *ngIf="devices.length<1">
       No device found.
     </div>
     <div>
-    <div>
+    <div *ngFor="let device of devices">
 
       <div class="device-record">
 
         <div class="device-image">
-          <mat-icon color="primary" class="device-icon">person_outline</mat-icon>
+          <mat-icon color="primary" class="device-icon">power</mat-icon>
         </div>
 
         <div class="device-details">
-          <span class="device-name">Device Name</span>
-          <span class="device-status">Online</span>
-          <div class="device-id">#light@id</div>
+          <span class="device-name">{{device.deviceName}}</span>
+          <span class="device" *ngIf="device.deviceStatus">Online</span>
+          <span class="device" *ngIf="!device.deviceStatus">Offline</span>
+          <div class="device-id">Description: {{device.deviceDescription}}</div>
+          <div class="device-id">Type: {{device.deviceType}}</div>
+          <div class="device-id">Device identifier: #{{device.deviceConnector}}@{{device.deviceId}}</div>
+          <div class="device-id">ip: {{device.deviceIp}}</div>
         </div>
 
         <div class="action-button-group">
           <div
             mat-ripple
             matRippleColor=#2962ff56
-            class="action-button">
-              <mat-icon color="primary" class="action-button-icon">edit</mat-icon>
+            class="action-button"
+            (click)="onClickConfigure(device.deviceId)">
+              <mat-icon color="primary" class="action-button-icon">settings</mat-icon>
           </div>
           <div
             mat-ripple
             matRippleColor=#2962ff56
-            class="action-button">
-              <mat-icon color="primary" class="action-button-icon">delete</mat-icon>
+            class="action-button"
+            (click)="onClickRemove()">
+              <mat-icon color="primary" class="action-button-icon">close</mat-icon>
           </div>
         </div>
 
