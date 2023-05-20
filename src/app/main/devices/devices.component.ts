@@ -26,8 +26,14 @@ export class DevicesComponent implements OnInit {
     this.openSnackBar('Method not implemented.');
   }
 
-  onClickRemove() {
-    this.openSnackBar('Method not implemented.');
+  onClickRemove(deviceId: string) {
+    this.onDeviceDelete(deviceId);
+  }
+  onDeviceDelete(deviceId: string) {
+    this.http.delete<{message: string}>(this.uri+'device/'+deviceId).subscribe(data=>{
+      this.openSnackBar(data.message);
+      this.ngOnInit();
+    });
   }
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';

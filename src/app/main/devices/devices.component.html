@@ -29,11 +29,11 @@
 
         <div class="device-details">
           <span class="device-name">{{device.deviceName}}</span>
-          <span class="device" *ngIf="device.deviceStatus">Online</span>
-          <span class="device" *ngIf="!device.deviceStatus">Offline</span>
+          <span class="device-status" *ngIf="device.deviceStatus">Online</span>
+          <span class="device-status" *ngIf="!device.deviceStatus">Offline</span>
           <div class="device-id">Description: {{device.deviceDescription}}</div>
           <div class="device-id">Type: {{device.deviceType}}</div>
-          <div class="device-id">Device identifier: #{{device.deviceConnector}}@{{device.deviceId}}</div>
+          <div class="device-id">Device identifier: #{{device.deviceId}}@{{device.deviceConnector}}</div>
           <div class="device-id">ip: {{device.deviceIp}}</div>
         </div>
 
@@ -49,7 +49,7 @@
             mat-ripple
             matRippleColor=#2962ff56
             class="action-button"
-            (click)="onClickRemove()">
+            (click)="onClickRemove(device.deviceId)">
               <mat-icon color="primary" class="action-button-icon">close</mat-icon>
           </div>
         </div>
