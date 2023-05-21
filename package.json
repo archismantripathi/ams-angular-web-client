@@ -1,6 +1,6 @@
 {
   "name": "ams",
-  "version": "0.0.0",
+  "version": "1.0.0b",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
