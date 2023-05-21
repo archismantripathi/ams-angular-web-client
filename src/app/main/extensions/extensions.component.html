@@ -1,1 +1,47 @@
-<p>extensions works!</p>
+<div class="extensions-component">
+
+  <mat-card class="extensions-table rounded-card">
+
+    <div class="table-head">
+      <span class="heading">Extensions</span>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="no-extension-found" *ngIf="extensions.length<1">
+      No extension installed.
+    </div>
+    <div>
+    <div *ngFor="let extension of extensions">
+
+      <div class="extension-record">
+
+        <div class="extension-image">
+          <mat-icon color="primary" class="extension-icon">extension</mat-icon>
+        </div>
+
+        <div class="extension-details">
+          <span class="extension-name">{{extension.extensionName}}</span>
+          <span class="extension-status">Active</span>
+          <div class="extension-id">Description: {{extension.extensionDescription}}</div>
+          <div class="extension-id">Connector: {{extension.extensionId}}</div>
+        </div>
+
+        <div class="action-button-group">
+          <div
+            mat-ripple
+            matRippleColor=#2962ff56
+            class="action-button"
+            (click)="onClickConfigure(extension.extensionId)">
+              <mat-icon color="primary" class="action-button-icon">settings</mat-icon>
+          </div>
+        </div>
+
+      </div>
+      <mat-divider></mat-divider>
+
+    </div>
+    </div>
+
+  </mat-card>
+
+</div>
