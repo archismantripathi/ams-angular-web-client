@@ -15,6 +15,7 @@ import { RoutinesComponent } from './routines/routines.component';
 import { ExtensionsComponent } from './extensions/extensions.component';
 import { ServicesComponent } from './services/services.component';
 import { TopbarComponent } from './topbar/topbar.component';
+import { TimeWaveAnimationComponent } from './dashboard/time-wave-animation/time-wave-animation.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { TopbarComponent } from './topbar/topbar.component';
     RoutinesComponent,
     ExtensionsComponent,
     ServicesComponent,
-    TopbarComponent
+    TopbarComponent,
+    TimeWaveAnimationComponent
   ],
   imports: [
     AppRoutingModule,

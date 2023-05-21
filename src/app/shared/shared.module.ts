@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { BackgroundAnimationComponent } from './background-animation/background-animation.component';
 
 
-
 @NgModule({
   declarations: [
     BackgroundAnimationComponent

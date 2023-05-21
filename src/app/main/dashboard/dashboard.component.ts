@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-
+  today = Date.now();
+  constructor(){
+    setInterval(() => {
+      this.today = Date.now();
+    }, 100);
+  }
 }

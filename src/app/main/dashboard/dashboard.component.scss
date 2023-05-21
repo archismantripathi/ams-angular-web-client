@@ -1,3 +1,162 @@
+app-time-wave-animation {
+  position: relative;
+  top: 5rem;
+  width: 100%;
+  height: 100%;
+}
+.filler {
+  border-bottom-left-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 20px));
+  border-bottom-right-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 20px));
+  background-color: rgba(41, 98, 255, 0.874);
+  width: 100%;
+  height: 43px;
+}
+
 .dashboard{
   padding: 2rem;
+}
+
+.widgets {
+  display: inline-block;
+  flex-wrap: wrap;
+}
+
+.rounded-card{
+  border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 20px));
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+.widget-cards {
+  display: inline-block;
+  margin: 1rem;
+  min-height: 10rem;
+  min-width: 20rem;
+}
+
+.time-card {
+  color: #2962ff;
+  width: 24rem;
+  float: left;
+  height: 22rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.time-top-gradient {
+  border-top-left-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 20px));
+  border-top-right-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 20px));
+  background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(41, 98, 255, 0.575));
+  width: 100%;
+  height: 6rem;
+}
+
+.time-container {
+  position: relative;
+  top:4rem;
+}
+
+.time {
+  display: inline;
+  font-weight: 700;
+}
+
+.date {
+  position: relative;
+  bottom: 0.7rem;
+}
+
+.ap-pm {
+  font-weight: 300;
+}
+
+.eeee {
+  font-weight: 700;
+}
+
+.slider {
+  position: absolute;
+  bottom: -5px;
+  left: 1rem;
+  align-self: center;
+  width: calc(100% - 48px);
+}
+
+.widget-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+.state-on{
+  background-color: rgba(255, 251, 0, 0.212);
+}
+
+.percentage {
+  font-weight: 300;
+  position: absolute;
+  left: 25px;
+  bottom: 35px;
+}
+
+.toggle-container {
+  margin-left: auto;
+  position: relative;
+  top: 15px;
+  right: 15px;
+}
+
+.toggle-button {
+  margin: 0.5rem;
+}
+
+.float-button {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+//from devices
+.device-status{
+  border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 10px));
+  background-color: #2962ff;
+  color: white;
+  font-size: x-small;
+  padding: 2px 5px;
+  position: relative;
+  bottom: 0.2rem;
+  margin-left: 0.5rem;
+  position: relative;
+  bottom: 0.1rem;
+}
+
+.device-image{
+  background-color: #f7a531cb;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  margin-left: .5rem;
+  border-radius: 100%;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+}
+
+.device-icon{
+  margin: auto;
+  transform: scale(1.4);
+  color: #ffff00;
+}
+
+.device-details{
+  margin: .3rem;
+  margin-left: 1rem;
+  margin-bottom: 4rem;
+}
+
+.device-name{
+  font-size: large;
+}
+
+.device-id{
+  font-size: small;
+  font-weight: 300;
 }

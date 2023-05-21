@@ -1,21 +1,75 @@
 <div class="dashboard">
+  <div class="widgets">
 
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente laborum laboriosam totam exercitationem qui facere accusantium odio, vitae blanditiis provident voluptatem eos laudantium aliquam! Quibusdam ipsum tempora maiores tempore iste.
-  <br>
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente laborum laboriosam totam exercitationem qui facere accusantium odio, vitae blanditiis provident voluptatem eos laudantium aliquam! Quibusdam ipsum tempora maiores tempore iste.
-  <br>
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam animi reprehenderit ipsum obcaecati quisquam iure est asperiores autem necessitatibus, corporis enim quidem dicta possimus. Hic obcaecati ducimus distinctio harum aliquam.
-  <br>
-  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio deserunt nulla eligendi possimus voluptate quos consequatur omnis atque unde officia. Unde doloribus aut ducimus! Placeat explicabo exercitationem nam impedit fuga?
-  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic unde quos a nisi adipisci cumque esse at quia temporibus amet optio fugit deleniti facilis id consectetur modi, aut ducimus dolorem!
-  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate porro iure natus eveniet, nobis dolorem! Eos, amet deleniti. Voluptatum voluptate nihil natus nesciunt doloremque ratione praesentium alias vel dicta odio.
-  <br>
-  <hr>
-  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse vitae veritatis, id tempora quae architecto itaque animi quibusdam velit blanditiis omnis magni ad est similique facere dignissimos at odit repellat.
-  <mat-divider></mat-divider>
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, impedit, aliquam ea repellendus similique commodi inventore omnis atque quaerat a, ex fuga exercitationem reiciendis blanditiis! Rerum, laudantium debitis? Labore, praesentium?
-  <br>
-  <br>
-  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus aspernatur delectus sunt, error cum pariatur ratione quaerat aperiam tempora veniam ipsam est vel nihil, iure placeat reiciendis voluptatum amet obcaecati.
+    <mat-card class="rounded-card widget-cards time-card">
+      <div class="time-top-gradient"></div>
 
+      <div class="time-container">
+        <h1 class="time">{{ today | date:'hh:mm:ss' }}</h1>
+        <span class="am-pm">{{ today | date:'a' }}</span>
+        <div class="date">
+          <span class="eeee">{{ today | date:'EEEE' }}</span>
+          {{ today | date:', d MMMM y' }}
+        </div>
+      </div>
+
+      <app-time-wave-animation></app-time-wave-animation>
+      <div class="filler"></div>
+    </mat-card>
+
+    <mat-card class="rounded-card widget-cards state-on">
+
+      <div class="widget-container">
+        <div>
+          <div class="device-image">
+            <mat-icon class="device-icon">wb_incandescent</mat-icon>
+          </div>
+
+          <div class="device-details">
+            <span class="device-name">devie</span>
+            <span class="device-status">Online</span>
+            <div class="device-id">#001@0001</div>
+          </div>
+        </div>
+        <div class="toggle-container">
+          <span>On</span>
+          <mat-slide-toggle class="toggle-button"></mat-slide-toggle>
+        </div>
+        <div class="percentage">70%</div>
+        <mat-slider class="slider">
+          <input matSliderThumb>
+        </mat-slider>
+      </div>
+
+    </mat-card>
+
+    <mat-card class="rounded-card widget-cards">
+
+      <div class="widget-container">
+        <div>
+          <div class="device-image">
+            <mat-icon class="device-icon">wb_incandescent</mat-icon>
+          </div>
+
+          <div class="device-details">
+            <span class="device-name">devie</span>
+            <span class="device-status">Online</span>
+            <div class="device-id">#001@0001</div>
+          </div>
+        </div>
+        <div class="toggle-container">
+          <span>On</span>
+          <mat-slide-toggle class="toggle-button"></mat-slide-toggle>
+        </div>
+        <div class="percentage">70%</div>
+        <mat-slider class="slider">
+          <input matSliderThumb>
+        </mat-slider>
+      </div>
+
+    </mat-card>
+    <button mat-fab color="primary" matTooltip="Dashboard Settings" aria-label="Dashboard settings" class="float-button">
+      <mat-icon>settings</mat-icon>
+    </button>
+  </div>
 </div>
