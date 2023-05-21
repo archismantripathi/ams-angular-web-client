@@ -141,3 +141,45 @@
   left: 1rem;
   bottom: 1.5rem;
 }
+
+.device-add-fields {
+  padding-top: 1rem;
+}
+
+.device-connector-with-icon {
+  display: flex;
+}
+
+.select-type {
+  position: relative;
+  left: 4.45rem;
+  width: 16rem;
+}
+
+.select-connector {
+  position: relative;
+  left: 1rem;
+  width: 16rem;
+}
+
+.update-button-group {
+  margin-top: 1rem;
+  display: flex;
+}
+
+.form-fields {
+  position: relative;
+  left: 1rem;
+  width: 19.45rem;
+  padding: 0rem;
+  margin: 0rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.textarea-full-width {
+  margin-left: 3rem;
+  width: 19.45rem;
+}

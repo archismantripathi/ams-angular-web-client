@@ -12,6 +12,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   exports: [
@@ -27,7 +28,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatRippleModule,
     MatTableModule,
     MatSnackBarModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSelectModule,
   ]
 })
 export class AngularMaterialModule {}

@@ -1,5 +1,7 @@
 <div class="devices-component">
 
+  <div *ngIf="!editMode; else templateEditDevice">
+  <div *ngIf="!addDeviceMode; else templateAddDevice">
   <mat-card class="devices-table rounded-card">
 
     <div class="table-head">
@@ -16,7 +18,7 @@
     <mat-divider></mat-divider>
 
     <div class="no-device-found" *ngIf="devices.length<1">
-      No device found.
+      No device added.
     </div>
     <div>
     <div *ngFor="let device of devices">
@@ -42,14 +44,14 @@
             mat-ripple
             matRippleColor=#2962ff56
             class="action-button"
-            (click)="onClickConfigure(device.deviceId)">
+            (click)="onClickConfigure(device)">
               <mat-icon color="primary" class="action-button-icon">settings</mat-icon>
           </div>
           <div
             mat-ripple
             matRippleColor=#2962ff56
             class="action-button"
-            (click)="onClickRemove(device.deviceId)">
+            (click)="onClickRemove(device.deviceId, device.deviceConnector)">
               <mat-icon color="primary" class="action-button-icon">close</mat-icon>
           </div>
         </div>
@@ -61,9 +63,206 @@
     </div>
 
   </mat-card>
+  </div>
+  </div>
 
 </div>
 
 <!-- add device -->
 
-<ng-template #addDevice></ng-template>
+<ng-template #templateAddDevice>
+  <mat-card class="devices-table rounded-card">
+
+    <div class="table-head">
+      <span class="heading">Add new device</span>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="device-add-fields">
+
+      <div class="device-connector-with-icon">
+      <div class="device-image">
+        <mat-icon color="primary" class="device-icon">power</mat-icon>
+      </div>
+
+      <mat-form-field class="select-connector" appearance="outline">
+        <mat-label>Select Connector</mat-label>
+        <mat-select [(value)]="selectedConnector" required>
+          <mat-option [value]="extension.extensionId" *ngFor="let extension of extensions">{{extension.extensionId}} - {{extension.extensionName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      </div>
+      <mat-form-field class="select-type" appearance="outline">
+        <mat-label>Select Device Type</mat-label>
+        <mat-select [(value)]="_newDeviceType" required>
+          <mat-option [value]="deviceType" *ngFor="let deviceType of deviceTypes">{{deviceType}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <div class="flex"><div>
+      <div class="device-record-edit-fields">
+        <mat-form-field
+          class="form-fields"
+          appearance="outline">
+            <mat-label>Device ID</mat-label>
+            <input
+              matInput
+              type="entity"
+              placeholder="Device Identifier"
+              [(ngModel)]="_newDeviceId"
+              required>
+        </mat-form-field>
+      </div>
+      <div class="device-record-edit-fields">
+        <mat-form-field class="form-fields" appearance="outline">
+          <mat-label>Device Name</mat-label>
+          <input
+            matInput
+            type="name"
+            placeholder="Device Name"
+            [(ngModel)]="_newDeviceName"
+            required>
+        </mat-form-field>
+      </div>
+      <div class="device-record-edit-fields">
+        <mat-form-field
+          class="form-fields"
+          appearance="outline">
+            <mat-label>Device IP</mat-label>
+            <input
+              matInput
+              type="entity"
+              placeholder="0.0.0.0:0000"
+              [(ngModel)]="_newDeviceIp"
+              required>
+        </mat-form-field>
+      </div>
+      </div>
+      <mat-form-field class="textarea-full-width" appearance="outline">
+        <mat-label>Device Description</mat-label>
+        <textarea matInput placeholder="Device Description....." rows="7"[(ngModel)]="_newDeviceDescription"></textarea>
+      </mat-form-field>
+      </div>
+      <mat-divider></mat-divider>
+
+      <div class="update-button-group">
+        <button
+          mat-raised-button
+          color="primary"
+          type=""
+          class="update-button"
+          (click)="onAddDevice()">
+            <mat-icon class="icons">add</mat-icon>Confirm
+        </button>
+        <button
+          class="close-button"
+          mat-button color="primary"
+          (click)="addDeviceMode=false">
+            <mat-icon class="icons">close</mat-icon>Close
+        </button>
+      </div>
+    </div>
+
+  </mat-card>
+</ng-template>
+
+<!-- edit device -->
+
+<ng-template #templateEditDevice>
+  <mat-card class="devices-table rounded-card">
+
+    <div class="table-head">
+      <span class="heading">Edit device</span>
+    </div>
+    <mat-divider></mat-divider>
+
+
+    <div class="device-add-fields">
+
+      <div class="device-connector-with-icon">
+      <div class="device-image">
+        <mat-icon color="primary" class="device-icon">power</mat-icon>
+      </div>
+
+      <mat-form-field class="select-connector" appearance="outline">
+        <mat-label>Select Connector</mat-label>
+        <mat-select [(value)]="selectedConnector" required disabled>
+          <mat-option [value]="extension.extensionId" *ngFor="let extension of extensions">{{extension.extensionId}} - {{extension.extensionName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      </div>
+      <mat-form-field class="select-type" appearance="outline">
+        <mat-label>Select Device Type</mat-label>
+        <mat-select [(value)]="_newDeviceType" required disabled>
+          <mat-option [value]="deviceType" *ngFor="let deviceType of deviceTypes">{{deviceType}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+        <div class="flex"><div>
+
+        <div class="device-record-edit-fields">
+          <mat-form-field
+            class="form-fields"
+            appearance="outline">
+              <mat-label>Device ID</mat-label>
+              <input
+                matInput
+                type="entity"
+                placeholder="Device Identifier"
+                [(ngModel)]="_newDeviceId"
+                required
+                disabled>
+          </mat-form-field>
+        </div>
+        <div class="device-record-edit-fields">
+          <mat-form-field class="form-fields" appearance="outline">
+            <mat-label>Device Name</mat-label>
+            <input
+              matInput
+              type="name"
+              placeholder="Device Name"
+              [(ngModel)]="_updateDeviceName"
+              required>
+          </mat-form-field>
+        </div>
+        <div class="device-record-edit-fields">
+          <mat-form-field
+            class="form-fields"
+            appearance="outline">
+              <mat-label>Device IP</mat-label>
+              <input
+                matInput
+                type="entity"
+                placeholder="0.0.0.0:0000"
+                [(ngModel)]="_updateDeviceIp"
+                required>
+          </mat-form-field>
+        </div>
+        </div>
+        <mat-form-field class="textarea-full-width" appearance="outline">
+          <mat-label>Device Description</mat-label>
+          <textarea matInput placeholder="Device Description....." rows="7"[(ngModel)]="_updateDeviceDescription"></textarea>
+        </mat-form-field>
+        </div>
+        <mat-divider></mat-divider>
+
+      <div class="update-button-group">
+        <button
+          mat-raised-button
+          color="primary"
+          type=""
+          class="update-button"
+          (click)="onConfigure()">
+            <mat-icon class="icons">edit</mat-icon>Confirm
+        </button>
+        <button
+          class="close-button"
+          mat-button color="primary"
+          (click)="editMode=false">
+            <mat-icon class="icons">close</mat-icon>Close
+        </button>
+      </div>
+    </div>
+
+  </mat-card>
+</ng-template>
