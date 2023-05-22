@@ -16,6 +16,19 @@ app-time-wave-animation {
   padding: 2rem;
 }
 
+.syncing {
+  position: absolute;
+  left: 8.3rem;
+  bottom: 8rem;
+}
+.sync-button {
+  border-radius: 100%;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  transform: scale(1.5);
+}
+
 .widgets {
   display: flex;
   flex-wrap: wrap;

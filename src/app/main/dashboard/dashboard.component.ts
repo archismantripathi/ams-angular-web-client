@@ -14,6 +14,7 @@ import { Widget } from './models/widget.model';
 })
 export class DashboardComponent implements OnInit{
   uri: string ='http://127.0.0.1:3000/api/';
+  sync: boolean = true;
   devices: Device[] = [];
   widgets: Widget[] = [];
 
@@ -57,8 +58,10 @@ export class DashboardComponent implements OnInit{
         }
       })
     }
+    this.sync = false;
   }
   async syncData() {
+    this.sync = true;
     this.http.get<{ data: Device[] }>(this.uri+'device')
     .subscribe(data=>{
       this.devices = data.data;

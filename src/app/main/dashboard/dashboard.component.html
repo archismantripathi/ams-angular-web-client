@@ -2,7 +2,19 @@
   <div class="widgets">
 
     <mat-card class="rounded-card widget-cards time-card">
-      <div class="time-top-gradient"></div>
+      <div class="time-top-gradient">
+        <mat-icon
+          class="sync-button"
+          mat-ripple
+          matRippleColor = #2962ff56
+          (click)="syncData()">
+            sync</mat-icon>
+      </div>
+
+      <div class="syncing" *ngIf="sync">
+        <mat-icon>sync</mat-icon>
+        Syncing...
+      </div>
 
       <div class="time-container">
         <h1 class="time">{{ today | date:'hh:mm:ss' }}</h1>
