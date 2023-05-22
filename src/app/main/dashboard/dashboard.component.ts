@@ -58,7 +58,9 @@ export class DashboardComponent implements OnInit{
         }
       })
     }
-    this.sync = false;
+    setTimeout(() => {
+      this.sync = false;
+    }, 120);
   }
   async syncData() {
     this.sync = true;
