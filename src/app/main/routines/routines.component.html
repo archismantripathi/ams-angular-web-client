@@ -1,1 +1,77 @@
-<p>routines works!</p>
+<div class="routines-component">
+
+  <mat-card class="routines-table rounded-card">
+
+    <div class="table-head">
+      <span class="heading">Routines</span>
+      <button
+        mat-stroked-button
+        color="primary"
+        class="add-routine">
+          <mat-icon class="user-icon">add</mat-icon>
+          New Routine
+      </button>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="no-routine-found" *ngIf="false">
+      No routine added.
+    </div>
+    <div>
+    <div>
+
+      <div class="routine-record">
+
+        <div class="routine-image">
+          <mat-icon color="primary" class="routine-icon">event_available</mat-icon>
+        </div>
+
+        <div class="routine-details">
+          <span class="routine-name">routine.routineName</span>
+          <div class="routine-id">Description: routine.routineDescription</div>
+          <div class="routine-id">Connector: routine.routineId</div>
+          <div class="flex-wrap">
+            <div class="flex-wrap">
+              <div class="routine-id">Time: </div>
+              <div class="actions-container">
+                <div class="routine-id">Start: 12:30</div>
+                <div class="routine-id">End:   70%</div>
+              </div>
+            </div>
+            <div class="flex-wrap">
+              <div class="routine-id">Action: </div>
+              <div class="actions-container">
+                <div class="routine-id">State: On</div>
+                <div class="routine-id">Intensity: 70%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="action-button-group">
+          <div
+            mat-ripple
+            matRippleColor=#2962ff56
+            class="action-button"
+            (click)="true">
+              <mat-icon color="primary" class="action-button-icon">edit</mat-icon>
+          </div>
+
+          <div
+            mat-ripple
+            matRippleColor=#2962ff56
+            class="action-button"
+            (click)="true">
+              <mat-icon color="primary" class="action-button-icon">delete</mat-icon>
+          </div>
+        </div>
+
+      </div>
+      <mat-divider></mat-divider>
+
+    </div>
+    </div>
+
+  </mat-card>
+
+</div>
