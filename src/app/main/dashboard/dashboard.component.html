@@ -17,7 +17,10 @@
       <div class="filler"></div>
     </mat-card>
 
-    <mat-card class="rounded-card widget-cards state-on">
+    <div *ngFor="let widget of widgets">
+    <mat-card
+      class="rounded-card widget-cards"
+      [ngClass]="{'state-on': widget.state}">
 
       <div class="widget-container">
         <div>
@@ -26,50 +29,35 @@
           </div>
 
           <div class="device-details">
-            <span class="device-name">devie</span>
-            <span class="device-status">Online</span>
-            <div class="device-id">#001@0001</div>
+            <span class="device-name">{{widget.deviceName}}</span>
+            <span class="device-status" *ngIf="widget.deviceStatus">Online</span>
+            <span class="device-status" *ngIf="!widget.deviceStatus">Offline</span>
+            <div class="device-id">#{{widget.deviceId}}@{{widget.deviceConnector}}</div>
           </div>
+
         </div>
         <div class="toggle-container">
-          <span>On</span>
-          <mat-slide-toggle class="toggle-button"></mat-slide-toggle>
+          <span *ngIf="widget.state">On</span>
+          <span *ngIf="!widget.state">Off</span>
+          <mat-slide-toggle
+            class="toggle-button"
+            [(ngModel)]="widget.state"
+            (click)="setState(widget.deviceId,widget.deviceConnector,widget.intensity,widget.state)"></mat-slide-toggle>
         </div>
-        <div class="percentage">70%</div>
+        <div class="percentage">{{widget.intensity}}%</div>
         <mat-slider class="slider">
-          <input matSliderThumb>
+          <input
+            matSliderThumb
+            [(ngModel)]="widget.intensity"
+            (click)="setState(widget.deviceId,widget.deviceConnector,widget.intensity,widget.state)">
         </mat-slider>
       </div>
 
     </mat-card>
+    </div>
 
-    <mat-card class="rounded-card widget-cards">
-
-      <div class="widget-container">
-        <div>
-          <div class="device-image">
-            <mat-icon class="device-icon">wb_incandescent</mat-icon>
-          </div>
-
-          <div class="device-details">
-            <span class="device-name">devie</span>
-            <span class="device-status">Online</span>
-            <div class="device-id">#001@0001</div>
-          </div>
-        </div>
-        <div class="toggle-container">
-          <span>On</span>
-          <mat-slide-toggle class="toggle-button"></mat-slide-toggle>
-        </div>
-        <div class="percentage">70%</div>
-        <mat-slider class="slider">
-          <input matSliderThumb>
-        </mat-slider>
-      </div>
-
-    </mat-card>
-    <button mat-fab color="primary" matTooltip="Dashboard Settings" aria-label="Dashboard settings" class="float-button">
+    <!-- <button mat-fab color="primary" matTooltip="Dashboard Settings" aria-label="Dashboard settings" class="float-button">
       <mat-icon>settings</mat-icon>
-    </button>
+    </button> -->
   </div>
 </div>
