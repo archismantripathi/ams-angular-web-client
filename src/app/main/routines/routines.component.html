@@ -68,7 +68,7 @@
             mat-ripple
             matRippleColor=#2962ff56
             class="action-button"
-            (click)="true">
+            (click)="onClickDelete(routine.routineId)">
               <mat-icon color="primary" class="action-button-icon">delete</mat-icon>
           </div>
         </div>
@@ -124,8 +124,8 @@
 
         <mat-form-field class="select-type" appearance="outline">
           <mat-label>Select Device</mat-label>
-          <mat-select [(value)]="selectedDevice" required>
-            <mat-option [value]="device.deviceId" *ngFor="let device of devices">{{device.deviceId}} - {{device.deviceName}}</mat-option>
+          <mat-select [(value)]="selectedDevice[0]" required>
+            <mat-option [value]="device" *ngFor="let device of devices">{{device.deviceId}} - {{device.deviceName}}</mat-option>
           </mat-select>
         </mat-form-field>
 
@@ -237,7 +237,7 @@
 
 <ng-template #templateEditRoutine>
   <div class="table-head">
-    <span class="heading">New routine</span>
+    <span class="heading">Edit routine</span>
   </div>
   <mat-divider></mat-divider>
 
@@ -274,7 +274,7 @@
 
         <mat-form-field class="select-type" appearance="outline">
           <mat-label>Select Device</mat-label>
-          <mat-select [(value)]="selectedDevice" required disabled>
+          <mat-select [(value)]="selectedDeviceId" required disabled>
             <mat-option [value]="device.deviceId" *ngFor="let device of devices">{{device.deviceId}} - {{device.deviceName}}</mat-option>
           </mat-select>
         </mat-form-field>

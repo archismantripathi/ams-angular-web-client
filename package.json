@@ -1,6 +1,7 @@
 {
   "name": "ams",
   "version": "1.0.0b",
+  "author": "Archisman Tripathi",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

@@ -21,7 +21,7 @@ export class RoutinesComponent implements OnInit{
   hh: string[] = ['01','02','04','05','06','07','08','09'];
   mm: string[] = ['00','01','02','04','05','06','07','08','09'];
   a: string[] = ['AM','PM'];
-  selectedDevice: string = '';
+  selectedDevice: Device[] = [];
   _routineId: string = '';
   _routineName: string = '';
   _routineDescription: string = '';
@@ -44,11 +44,10 @@ export class RoutinesComponent implements OnInit{
 
   addMode: boolean = false;
   onClickAdd() {
-    this.selectedDevice = '';
+    this.selectedDevice.pop;
     this._routineId = ''+Date.now();
     this._routineName = '';
     this._routineDescription = '';
-    this.selectedDevice = '';
     this._routineStartTimeHH = '';
     this._routineStartTimeMM = '';
     this._routineStartTimeA = '';
@@ -63,24 +62,26 @@ export class RoutinesComponent implements OnInit{
     if(
       this._routineId == "" ||
       this._routineName == "" ||
-      this.selectedDevice == "" ||
+      this.selectedDevice[0].deviceId == "" ||
       this._routineStartTimeHH == "" ||
       this._routineStartTimeMM == "" ||
       this._routineStartTimeA == "" ||
       this._routineEndTimeHH == "" ||
       this._routineEndTimeMM == "" ||
       this._routineEndTimeA == "" ||
-      this._routineDeviceIntensity
+      !this._routineDeviceIntensity
     ) {
       this.openSnackBar("❌ Fields can't be empty.");
+      return;
     }
 
-    this.http.patch<{message: string}>(this.uri+'routine/'+this._routineId,{
+    this.http.post<{message: string}>(this.uri+'routine',{
 
       routineId: this._routineId,
       routineName: this._routineName,
       routineDescription: this._routineDescription,
-      routineDevice: this.selectedDevice,
+      routineConnector: this.selectedDevice[0].deviceConnector,
+      routineDevice: this.selectedDevice[0].deviceId,
 
       startTime:  this._routineStartTimeHH+':'+
                   this._routineStartTimeMM+' '+
@@ -95,19 +96,19 @@ export class RoutinesComponent implements OnInit{
 
     }).subscribe(data=>{
       this.openSnackBar(data.message);
-      this.editMode = false;
+      this.addMode = false;
       this.ngOnInit();
     });
   }
 
   editMode: boolean = false;
+  selectedDeviceId: string = '';
   onClickEdit(routineId: string) {
     this.http.get<{data: Routine}>(this.uri+'routine/'+routineId).subscribe(data=>{
-      this.selectedDevice = data.data.routineDevice;
       this._routineId = data.data.routineId;
       this._routineName = data.data.routineName;
-      this.selectedDevice = data.data.routineDevice;
       this._routineDescription = data.data.routineDescription;
+      this.selectedDeviceId = data.data.routineDevice;
       this._routineStartTimeHH = data.data.startTime.split(':')[0];
       this._routineStartTimeMM = data.data.startTime.split(':')[1].split(' ')[0];
       this._routineStartTimeA = data.data.startTime.split(':')[1].split(' ')[1];
@@ -128,10 +129,11 @@ export class RoutinesComponent implements OnInit{
         this._routineEndTimeHH == "" ||
         this._routineEndTimeMM == "" ||
         this._routineEndTimeA == "" ||
-        this._routineDeviceIntensity
+        !this._routineDeviceIntensity
       ) {
-      this.openSnackBar("❌ Fields can't be empty.");
-    }
+        this.openSnackBar("❌ Fields can't be empty.");
+        return;
+      }
 
     this.http.patch<{message: string}>(this.uri+'routine/'+this._routineId,{
 
@@ -152,6 +154,13 @@ export class RoutinesComponent implements OnInit{
     }).subscribe(data=>{
       this.openSnackBar(data.message);
       this.editMode = false;
+      this.ngOnInit();
+    });
+  }
+
+  onClickDelete(routineId: string) {
+    this.http.delete<{message: string}>(this.uri+'routine/'+routineId).subscribe(data=>{
+      this.openSnackBar(data.message);
       this.ngOnInit();
     });
   }
