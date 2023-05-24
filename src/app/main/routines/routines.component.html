@@ -1,24 +1,28 @@
 <div class="routines-component">
 
   <mat-card class="routines-table rounded-card">
+  <div *ngIf="addMode; then templateAddRoutine"></div>
+  <div *ngIf="editMode; then templateEditRoutine"></div>
+  <div *ngIf="!addMode&&!editMode">
 
     <div class="table-head">
       <span class="heading">Routines</span>
       <button
         mat-stroked-button
         color="primary"
-        class="add-routine">
+        class="add-routine"
+        (click)="onClickAdd()">
           <mat-icon class="user-icon">add</mat-icon>
           New Routine
       </button>
     </div>
     <mat-divider></mat-divider>
 
-    <div class="no-routine-found" *ngIf="false">
+    <div class="no-routine-found" *ngIf="routines.length<1">
       No routine added.
     </div>
-    <div>
-    <div>
+    <div *ngIf="!(routines.length<1)">
+    <div *ngFor="let routine of routines">
 
       <div class="routine-record">
 
@@ -27,22 +31,25 @@
         </div>
 
         <div class="routine-details">
-          <span class="routine-name">routine.routineName</span>
-          <div class="routine-id">Description: routine.routineDescription</div>
-          <div class="routine-id">Connector: routine.routineId</div>
+          <span class="routine-name">{{routine.routineName}}</span>
+          <div class="routine-id">#{{routine.routineId}}</div>
+          <div class="routine-id">Description: {{routine.routineDescription}}</div>
+
+          <div class="routine-id">Device ID: #{{routine.routineDevice}}@{{routine.routineConnector}}</div>
           <div class="flex-wrap">
             <div class="flex-wrap">
               <div class="routine-id">Time: </div>
               <div class="actions-container">
-                <div class="routine-id">Start: 12:30</div>
-                <div class="routine-id">End:   70%</div>
+                <div class="routine-id">Start: {{routine.startTime}}</div>
+                <div class="routine-id">End:   {{routine.endTime}}</div>
               </div>
             </div>
             <div class="flex-wrap">
               <div class="routine-id">Action: </div>
               <div class="actions-container">
-                <div class="routine-id">State: On</div>
-                <div class="routine-id">Intensity: 70%</div>
+                <div class="routine-id" *ngIf="routine.state">State: On</div>
+                <div class="routine-id" *ngIf="!routine.state">State: Off</div>
+                <div class="routine-id">Intensity: {{routine.intensity}}%</div>
               </div>
             </div>
           </div>
@@ -53,7 +60,7 @@
             mat-ripple
             matRippleColor=#2962ff56
             class="action-button"
-            (click)="true">
+            (click)="onClickEdit(routine.routineId)">
               <mat-icon color="primary" class="action-button-icon">edit</mat-icon>
           </div>
 
@@ -72,6 +79,306 @@
     </div>
     </div>
 
+  </div>
   </mat-card>
 
 </div>
+
+<!-- add Routine -->
+
+<ng-template #templateAddRoutine>
+  <div class="table-head">
+    <span class="heading">New routine</span>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div class="routine-add-fields">
+
+    <div class="flex">
+      <div>
+        <div class="select-type">
+          <mat-form-field
+            class="form-fields"
+            appearance="outline">
+              <mat-label>Routine ID</mat-label>
+              <input
+                matInput
+                type="entity"
+                placeholder="Routine Identifier"
+                [(ngModel)]="_routineId"
+                required>
+          </mat-form-field>
+        </div>
+
+        <div class="select-type">
+          <mat-form-field class="form-fields" appearance="outline">
+            <mat-label>Routine Name</mat-label>
+            <input
+              matInput
+              type="devicename"
+              placeholder="Routine Name"
+              [(ngModel)]="_routineName"
+              required>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field class="select-type" appearance="outline">
+          <mat-label>Select Device</mat-label>
+          <mat-select [(value)]="selectedDevice" required>
+            <mat-option [value]="device.deviceId" *ngFor="let device of devices">{{device.deviceId}} - {{device.deviceName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+
+      <div>
+        <mat-form-field class="textarea-full-width" appearance="outline">
+          <mat-label>Routine Description</mat-label>
+          <textarea matInput placeholder="Device Description....." rows="7"[(ngModel)]="_routineDescription"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rounded-card config-card">
+    <div class="flex-wrap">
+
+      <div class="config-fields">
+        <h3>Start Time</h3>
+        <mat-form-field class="select-time" appearance="outline">
+          <mat-label>HH</mat-label>
+          <mat-select [(value)]="_routineStartTimeHH" required>
+            <mat-option [value]="_hh" *ngFor="let _hh of hh">{{_hh}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="select-time" appearance="outline">
+          <mat-label>MM</mat-label>
+          <mat-select [(value)]="_routineStartTimeMM" required>
+            <mat-option [value]="_mm" *ngFor="let _mm of mm">{{_mm}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="select-time" appearance="outline">
+          <mat-label>AA</mat-label>
+          <mat-select [(value)]="_routineStartTimeA" required>
+            <mat-option [value]="_a" *ngFor="let _a of a">{{_a}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="config-fields">
+        <h3>End Time</h3>
+        <mat-form-field class="select-time" appearance="outline">
+          <mat-label>HH</mat-label>
+          <mat-select [(value)]="_routineEndTimeHH" required>
+            <mat-option [value]="_hh" *ngFor="let _hh of hh">{{_hh}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="select-time" appearance="outline">
+          <mat-label>MM</mat-label>
+          <mat-select [(value)]="_routineEndTimeMM" required>
+            <mat-option [value]="_mm" *ngFor="let _mm of mm">{{_mm}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="select-time" appearance="outline">
+          <mat-label>AA</mat-label>
+          <mat-select [(value)]="_routineEndTimeA" required>
+            <mat-option [value]="_a" *ngFor="let _a of a">{{_a}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="config-fields">
+        <h3>Actions</h3>
+        <mat-form-field class="intensity-field" appearance="outline">
+          <mat-label>Intensity</mat-label>
+            <input
+                matInput
+                type="number"
+                placeholder="100"
+                [(ngModel)]="_routineDeviceIntensity"
+                required>
+              <span matTextSuffix>%</span>
+        </mat-form-field>
+        <div class="toggle-container">
+          <span *ngIf="_routineDeviceState">On</span>
+          <span *ngIf="!_routineDeviceState">Off</span>
+          <mat-slide-toggle
+            color="primary"
+            class="toggle-button"
+            [(ngModel)]="_routineDeviceState"></mat-slide-toggle>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="update-button-group">
+    <button
+      mat-raised-button
+      color="primary"
+      class="update-button"
+      (click)="onAdd()">
+        <mat-icon class="icons">edit</mat-icon>Confirm
+    </button>
+    <button
+      class="close-button"
+      mat-button color="primary"
+      (click)="addMode=false">
+        <mat-icon class="icons">close</mat-icon>Close
+    </button>
+  </div>
+
+</ng-template>
+
+<!-- edit Routine -->
+
+<ng-template #templateEditRoutine>
+  <div class="table-head">
+    <span class="heading">New routine</span>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div class="routine-add-fields">
+
+    <div class="flex">
+      <div>
+        <div class="select-type">
+          <mat-form-field
+            class="form-fields"
+            appearance="outline">
+              <mat-label>Routine ID</mat-label>
+              <input
+                matInput
+                type="entity"
+                placeholder="Routine Identifier"
+                [(ngModel)]="_routineId"
+                required
+                disabled>
+          </mat-form-field>
+        </div>
+
+        <div class="select-type">
+          <mat-form-field class="form-fields" appearance="outline">
+            <mat-label>Routine Name</mat-label>
+            <input
+              matInput
+              type="devicename"
+              placeholder="Routine Name"
+              [(ngModel)]="_routineName"
+              required>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field class="select-type" appearance="outline">
+          <mat-label>Select Device</mat-label>
+          <mat-select [(value)]="selectedDevice" required disabled>
+            <mat-option [value]="device.deviceId" *ngFor="let device of devices">{{device.deviceId}} - {{device.deviceName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+
+      <div>
+        <mat-form-field class="textarea-full-width" appearance="outline">
+          <mat-label>Routine Description</mat-label>
+          <textarea matInput placeholder="Device Description....." rows="7"[(ngModel)]="_routineDescription"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rounded-card config-card">
+    <div class="flex-wrap">
+
+      <div class="config-fields">
+        <h3>Start Time</h3>
+        <mat-form-field class="select-time" appearance="outline">
+          <mat-label>HH</mat-label>
+          <mat-select [(value)]="_routineStartTimeHH" required>
+            <mat-option [value]="_hh" *ngFor="let _hh of hh">{{_hh}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="select-time" appearance="outline">
+          <mat-label>MM</mat-label>
+          <mat-select [(value)]="_routineStartTimeMM" required>
+            <mat-option [value]="_mm" *ngFor="let _mm of mm">{{_mm}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="select-time" appearance="outline">
+          <mat-label>AA</mat-label>
+          <mat-select [(value)]="_routineStartTimeA" required>
+            <mat-option [value]="_a" *ngFor="let _a of a">{{_a}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="config-fields">
+        <h3>End Time</h3>
+        <mat-form-field class="select-time" appearance="outline">
+          <mat-label>HH</mat-label>
+          <mat-select [(value)]="_routineEndTimeHH" required>
+            <mat-option [value]="_hh" *ngFor="let _hh of hh">{{_hh}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="select-time" appearance="outline">
+          <mat-label>MM</mat-label>
+          <mat-select [(value)]="_routineEndTimeMM" required>
+            <mat-option [value]="_mm" *ngFor="let _mm of mm">{{_mm}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="select-time" appearance="outline">
+          <mat-label>AA</mat-label>
+          <mat-select [(value)]="_routineEndTimeA" required>
+            <mat-option [value]="_a" *ngFor="let _a of a">{{_a}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="config-fields">
+        <h3>Actions</h3>
+        <mat-form-field class="intensity-field" appearance="outline">
+          <mat-label>Intensity</mat-label>
+            <input
+                matInput
+                type="number"
+                placeholder="100"
+                [(ngModel)]="_routineDeviceIntensity"
+                required>
+              <span matTextSuffix>%</span>
+        </mat-form-field>
+        <div class="toggle-container">
+          <span *ngIf="_routineDeviceState">On</span>
+          <span *ngIf="!_routineDeviceState">Off</span>
+          <mat-slide-toggle
+            color="primary"
+            class="toggle-button"
+            [(ngModel)]="_routineDeviceState"></mat-slide-toggle>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="update-button-group">
+    <button
+      mat-raised-button
+      color="primary"
+      class="update-button"
+      (click)="onEdit()">
+        <mat-icon class="icons">edit</mat-icon>Confirm
+    </button>
+    <button
+      class="close-button"
+      mat-button color="primary"
+      (click)="editMode=false">
+        <mat-icon class="icons">close</mat-icon>Close
+    </button>
+  </div>
+
+</ng-template>

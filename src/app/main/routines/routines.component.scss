@@ -154,3 +154,128 @@
 .actions-container {
   padding-left: 1rem;
 }
+
+.update-button-group {
+  margin-top: 1rem;
+  display: flex;
+}
+
+.routine-add-fields {
+  padding-top: 1rem;
+}
+
+//from devices
+
+.form-fields {
+  margin: 1rem;
+}
+
+.device-record-edit {
+  padding: 1rem;
+}
+
+.update-button {
+  border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 24px));
+  font-size: large;
+  height: 3rem;
+  width: 7rem;
+  margin-left: auto;
+}
+.close-button {
+  border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 24px));
+  outline: auto;
+  outline-color: #2962ff;
+  margin-left: 1rem;
+  font-size: large;
+  height: 3rem;
+  width: 7rem;
+}
+
+.edit-devices-card {
+  @extend .routines-table;
+  padding-bottom: 0.5rem;
+}
+
+.update-checkbox {
+  position: relative;
+  left: 1rem;
+  bottom: 1.5rem;
+}
+
+.device-add-fields {
+  padding-top: 1rem;
+}
+
+.device-connector-with-icon {
+  display: flex;
+}
+
+.select-type {
+  position: relative;
+  left: 2rem;
+  width: 20rem;
+}
+
+.select-connector {
+  position: relative;
+  left: 1rem;
+  width: 16rem;
+}
+
+.update-button-group {
+  margin-top: 1rem;
+  display: flex;
+}
+
+.form-fields {
+  position: relative;
+  width: 20rem;
+  padding: 0rem;
+  margin: 0rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.textarea-full-width {
+  margin-left: 3rem;
+  width: 19.45rem;
+}
+
+.toggle-container {
+  margin-left: 1.7rem ;
+  display: inline-block;
+}
+
+.toggle-button {
+  margin-left: .5rem;
+}
+
+.intensity-field {
+  width: 14.5rem;
+}
+
+.config-card {
+  @extend .rounded-card;
+  background-color: none;
+  backdrop-filter: none;
+  margin-bottom: 2rem;
+  outline: auto;
+  outline-color: #2962ff;
+  padding: 1rem;
+}
+
+.config-fields {
+  margin: 1rem;
+}
+
+.select-time {
+  width: 6.5rem;
+  padding-right: 1rem;
+}
+
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
